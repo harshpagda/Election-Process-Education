@@ -1,0 +1,63 @@
+@import "./variables.css";
+@import "./animations.css";
+@import "./responsive.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family:
+    "Inter",
+    "Segoe UI",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(59, 130, 246, 0.08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(249, 115, 22, 0.08),
+      transparent 26%
+    ),
+    #f8fafc;
+  color: #0f172a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+::selection {
+  background: rgba(59, 130, 246, 0.2);
+  color: #0f172a;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

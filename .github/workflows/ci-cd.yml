@@ -1,0 +1,123 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  backend-test:
+    runs-on: ubuntu-latest
+
+    services:
+      mongodb:
+        image: mongo:latest
+        options: >-
+          --health-cmd mongosh
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 27017:27017
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install backend dependencies
+        working-directory: ./backend
+        run: npm ci
+
+      - name: Lint backend
+        working-directory: ./backend
+        run: npm run lint --if-present
+
+      - name: Build backend
+        working-directory: ./backend
+        run: npm run build --if-present
+
+      - name: Run backend tests
+        working-directory: ./backend
+        env:
+          MONGODB_URI: mongodb://localhost:27017/election-assistant-test
+          JWT_SECRET: test-secret
+        run: npm test --if-present
+
+  frontend-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install frontend dependencies
+        working-directory: ./frontend
+        run: npm ci
+
+      - name: Lint frontend
+        working-directory: ./frontend
+        run: npm run lint --if-present
+
+      - name: Build frontend
+        working-directory: ./frontend
+        env:
+          VITE_API_BASE_URL: http://localhost:5000/api
+        run: npm run build
+
+      - name: Run frontend tests
+        working-directory: ./frontend
+        run: npm test --if-present
+
+  security-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: "config"
+          scan-ref: "."
+
+  docker-build:
+    needs: [backend-test, frontend-test]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push backend image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./Dockerfile.backend
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/election-api:latest
+
+      - name: Build and push frontend image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./Dockerfile.frontend
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/election-ui:latest

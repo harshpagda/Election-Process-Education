@@ -1,0 +1,90 @@
+/* Responsive Design Utilities */
+
+@media (max-width: 640px) {
+  .sm\:hidden {
+    display: none;
+  }
+
+  .sm\:flex {
+    display: flex;
+  }
+
+  .sm\:grid {
+    display: grid;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .md\:hidden {
+    display: none;
+  }
+
+  .md\:flex {
+    display: flex;
+  }
+
+  .md\:grid {
+    display: grid;
+  }
+}
+
+@media (min-width: 1025px) {
+  .lg\:hidden {
+    display: none;
+  }
+
+  .lg\:flex {
+    display: flex;
+  }
+
+  .lg\:grid {
+    display: grid;
+  }
+}
+
+/* Touch-friendly sizes */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  a,
+  input[type="button"],
+  input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    @apply bg-gray-900 text-gray-50;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    @apply bg-gray-800 text-gray-50;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white;
+  }
+
+  .no-print {
+    display: none;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

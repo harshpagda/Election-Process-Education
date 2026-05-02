@@ -1,0 +1,61 @@
+{
+  "app": {
+    "title": "Election Process Assistant",
+    "description": "Your AI-powered guide to understanding the election process"
+  },
+  "nav": {
+    "home": "Home",
+    "chat": "AI Chat",
+    "timeline": "Timeline",
+    "eligibility": "Am I Eligible?",
+    "booth": "Find Polling Booth",
+    "guide": "Step Guide",
+    "profile": "Profile",
+    "settings": "Settings"
+  },
+  "buttons": {
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete"
+  },
+  "messages": {
+    "welcome": "Welcome to Election Process Assistant",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Operation successful"
+  },
+  "header": {
+    "home": "Home",
+    "elections": "Elections",
+    "faq": "FAQ",
+    "dashboard": "Dashboard",
+    "chat": "Chat",
+    "tagline": "Clear voting guidance",
+    "selectLanguage": "Select language",
+    "signedInAs": "Signed in as",
+    "user": "User",
+    "openMenu": "Open menu"
+  },
+  "auth": {
+    "loginTitle": "Login",
+    "registerTitle": "Create Account",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "phone": "Phone Number",
+    "phonePlaceholder": "10-digit mobile number",
+    "dateOfBirth": "Date of Birth",
+    "state": "State",
+    "selectState": "Select State",
+    "loggingIn": "Logging in...",
+    "creatingAccount": "Creating Account...",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?"
+  }
+}

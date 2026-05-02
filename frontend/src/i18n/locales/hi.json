@@ -1,0 +1,61 @@
+{
+  "app": {
+    "title": "चुनाव प्रक्रिया सहायक",
+    "description": "चुनाव प्रक्रिया को समझने के लिए आपका AI-संचालित गाइड"
+  },
+  "nav": {
+    "home": "होम",
+    "chat": "AI चैट",
+    "timeline": "समयरेखा",
+    "eligibility": "क्या मैं योग्य हूं?",
+    "booth": "मतदान केंद्र खोजें",
+    "guide": "चरण-दर-चरण गाइड",
+    "profile": "प्रोफाइल",
+    "settings": "सेटिंग्स"
+  },
+  "buttons": {
+    "login": "लॉगिन",
+    "logout": "लॉगआउट",
+    "register": "पंजीकृत करें",
+    "submit": "जमा करें",
+    "cancel": "रद्द करें",
+    "save": "सहेजें",
+    "delete": "हटाएं"
+  },
+  "messages": {
+    "welcome": "चुनाव प्रक्रिया सहायक में आपका स्वागत है",
+    "loading": "लोड हो रहा है...",
+    "error": "एक त्रुटि हुई",
+    "success": "ऑपरेशन सफल"
+  },
+  "header": {
+    "home": "होम",
+    "elections": "चुनाव",
+    "faq": "सामान्य प्रश्न",
+    "dashboard": "डैशबोर्ड",
+    "chat": "चैट",
+    "tagline": "स्पष्ट मतदान मार्गदर्शन",
+    "selectLanguage": "भाषा चुनें",
+    "signedInAs": "इस रूप में लॉगिन",
+    "user": "उपयोगकर्ता",
+    "openMenu": "मेनू खोलें"
+  },
+  "auth": {
+    "loginTitle": "लॉगिन",
+    "registerTitle": "खाता बनाएं",
+    "email": "ईमेल",
+    "password": "पासवर्ड",
+    "confirmPassword": "पासवर्ड की पुष्टि करें",
+    "firstName": "पहला नाम",
+    "lastName": "अंतिम नाम",
+    "phone": "फोन नंबर",
+    "phonePlaceholder": "10 अंकों का मोबाइल नंबर",
+    "dateOfBirth": "जन्म तिथि",
+    "state": "राज्य",
+    "selectState": "राज्य चुनें",
+    "loggingIn": "लॉगिन हो रहा है...",
+    "creatingAccount": "खाता बनाया जा रहा है...",
+    "noAccount": "क्या आपका खाता नहीं है?",
+    "haveAccount": "क्या आपका खाता है?"
+  }
+}
