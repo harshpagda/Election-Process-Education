@@ -13,6 +13,8 @@ import FAQ from '../pages/FAQ';
 import Elections from '../pages/Elections';
 import LiveElections from '../pages/LiveElections';
 import PollingBooths from '../pages/PollingBooths';
+import Vote from '../pages/Vote';
+import AdminDashboard from '../pages/AdminDashboard';
 
 // Components
 import ProtectedRoute from './ProtectedRoute';
@@ -58,6 +60,22 @@ export default function AppRoutes() {
             element={
               <ProtectedRoute>
                 <PollingBooths />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/vote"
+            element={
+              <ProtectedRoute>
+                <Vote />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute adminOnly={true}>
+                <AdminDashboard />
               </ProtectedRoute>
             }
           />

@@ -27,8 +27,8 @@ export const searchFAQs = async (searchQuery, language = "en") => {
   return FAQs.map((faq) => ({
     _id: faq._id,
     category: faq.category,
-    question: faq.languages[language]?.question || faq.question,
-    answer: faq.languages[language]?.answer || faq.answer,
+    question: faq.languages?.[language]?.question || faq.question,
+    answer: faq.languages?.[language]?.answer || faq.answer,
     views: faq.views,
     helpful: faq.helpful,
     notHelpful: faq.notHelpful,
@@ -47,8 +47,8 @@ export const getFAQById = async (faqId, language = "en") => {
 
   return {
     ...faq.toObject(),
-    question: faq.languages[language]?.question || faq.question,
-    answer: faq.languages[language]?.answer || faq.answer,
+    question: faq.languages?.[language]?.question || faq.question,
+    answer: faq.languages?.[language]?.answer || faq.answer,
   };
 };
 

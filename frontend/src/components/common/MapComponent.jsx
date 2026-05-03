@@ -73,7 +73,7 @@ export default function MapComponent({
         {booths.map((booth) => (
           <Marker
             key={booth._id}
-            position={[booth.location.coordinates[1], booth.location.coordinates[0]]}
+            position={[booth.coordinates?.coordinates[1] || 0, booth.coordinates?.coordinates[0] || 0]}
             icon={boothIcon}
             eventHandlers={{
               click: () => onBoothClick && onBoothClick(booth),

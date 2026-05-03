@@ -9,6 +9,7 @@ import {
   updateTimelineInfo,
   removeTimeline,
   getUpcomingDates,
+  addElectionAnnouncement,
 } from "../controllers/election.controller.js";
 import { authMiddleware, adminMiddleware } from "../middlewares/auth.js";
 import { validateElection, validate } from "../validations/index.js";
@@ -26,8 +27,8 @@ router.post(
   "/",
   authMiddleware,
   adminMiddleware,
-  asyncHandler(validateElection),
-  asyncHandler(validate),
+  ...validateElection,
+  validate,
   asyncHandler(createNewElection),
 );
 router.put(
@@ -41,6 +42,12 @@ router.delete(
   authMiddleware,
   adminMiddleware,
   asyncHandler(deleteElectionInfo),
+);
+router.post(
+  "/:electionId/announcements",
+  authMiddleware,
+  adminMiddleware,
+  asyncHandler(addElectionAnnouncement)
 );
 
 // Timeline routes

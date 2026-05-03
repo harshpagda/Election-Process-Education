@@ -228,8 +228,8 @@ export default function PollingBooths() {
                   📍 Distance from your location: ~{' '}
                   {Math.round(
                     Math.sqrt(
-                      Math.pow(selectedBooth.location.coordinates[1] - location.latitude, 2) +
-                      Math.pow(selectedBooth.location.coordinates[0] - location.longitude, 2)
+                      Math.pow(selectedBooth.coordinates?.coordinates[1] - location.latitude, 2) +
+                      Math.pow(selectedBooth.coordinates?.coordinates[0] - location.longitude, 2)
                     ) * 111 // Rough conversion to km
                   )}{' '}
                   km

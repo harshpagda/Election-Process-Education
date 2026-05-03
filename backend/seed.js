@@ -79,7 +79,7 @@ const seedUsers = async () => {
       },
     ];
 
-    await User.insertMany(users);
+    await User.create(users);
 
     console.log("✅ Users seeded successfully");
     console.log(`Inserted Users: ${users.length}`);

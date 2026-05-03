@@ -60,6 +60,17 @@ const electionSchema = new mongoose.Schema(
     totalElectors: Number,
     totalCandidates: Number,
     image: String,
+    resultsDeclared: {
+      type: Boolean,
+      default: false,
+    },
+    announcements: [
+      {
+        title: { type: String, required: true },
+        content: { type: String, required: true },
+        date: { type: Date, default: Date.now },
+      },
+    ],
   },
   {
     timestamps: true,

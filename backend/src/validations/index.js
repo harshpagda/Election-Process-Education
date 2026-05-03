@@ -41,10 +41,13 @@ export const validateSignup = [
     return true;
   }),
   body("dateOfBirth")
-    .optional()
+    .optional({ values: "falsy" })
     .isISO8601()
     .withMessage("Valid date is required"),
-  body("state").optional().notEmpty().withMessage("State is required"),
+  body("state")
+    .optional({ values: "falsy" })
+    .notEmpty()
+    .withMessage("State is required"),
 ];
 
 export const validateLogin = [
@@ -112,4 +115,20 @@ export const validateFAQ = [
     .withMessage("Invalid category"),
   body("question").trim().notEmpty().withMessage("Question is required"),
   body("answer").trim().notEmpty().withMessage("Answer is required"),
+];
+
+// Candidate Validations
+export const validateCandidate = [
+  body("election").notEmpty().withMessage("Election ID is required"),
+  body("name").trim().notEmpty().withMessage("Candidate name is required"),
+  body("party").trim().notEmpty().withMessage("Party name is required"),
+  body("symbol").trim().notEmpty().withMessage("Party symbol is required"),
+  body("constituency").optional().trim(),
+  body("order").optional().isInt({ min: 0 }),
+];
+
+// Vote Validations
+export const validateVote = [
+  body("electionId").notEmpty().withMessage("Election ID is required"),
+  body("candidateId").notEmpty().withMessage("Candidate ID is required"),
 ];

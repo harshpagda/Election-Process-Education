@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Space+Grotesk:wght@400;600;700&display=swap");
+
+.vote-body {
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+}
+
+.vote-display {
+  font-family: "Fraunces", "Space Grotesk", serif;
+}
+
+.vote-panel {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.9),
+    rgba(30, 64, 175, 0.75)
+  );
+}
+
+.vote-float {
+  animation: voteFloat 8s ease-in-out infinite;
+}
+
+@keyframes voteFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

@@ -24,8 +24,8 @@ router.post(
   "/",
   authMiddleware,
   adminMiddleware,
-  asyncHandler(validateFAQ),
-  asyncHandler(validate),
+  ...validateFAQ,
+  validate,
   asyncHandler(createNewFAQ),
 );
 router.put(

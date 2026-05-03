@@ -12,6 +12,7 @@ import {
   deleteTimeline,
   getUpcomingEvents,
 } from "../services/election.service.js";
+import Election from "../models/Election.js";
 
 export const createNewElection = async (req, res, next) => {
   try {
@@ -71,6 +72,29 @@ export const deleteElectionInfo = async (req, res, next) => {
   }
 };
 
+export const addElectionAnnouncement = async (req, res, next) => {
+  try {
+    const { electionId } = req.params;
+    const { title, content } = req.body;
+    
+    if (!title || !content) {
+      throw new ApiError(400, "Title and content are required for an announcement");
+    }
+
+    const election = await Election.findById(electionId);
+    if (!election) {
+      throw new ApiError(404, "Election not found");
+    }
+
+    election.announcements.push({ title, content });
+    await election.save();
+
+    res.json(new ApiResponse(201, "Announcement added successfully", election));
+  } catch (error) {
+    next(error);
+  }
+};
+
 // Timeline endpoints
 export const addTimeline = async (req, res, next) => {
   try {
@@ -108,6 +132,16 @@ export const getUpcomingDates = async (req, res, next) => {
     const { state } = req.query;
     const events = await getUpcomingEvents(state);
     res.json(new ApiResponse(200, "Upcoming events fetched", events));
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getElectionTimelines = async (req, res, next) => {
+  try {
+    const { electionId } = req.params;
+    const timelines = await getTimelineByElection(electionId);
+    res.json(new ApiResponse(200, "Timelines fetched", timelines));
   } catch (error) {
     next(error);
   }

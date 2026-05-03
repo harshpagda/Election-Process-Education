@@ -19,8 +19,8 @@ export const listFAQs = async (req, res, next) => {
     if (language !== "en") {
       const localizedFAQs = faqs.map((faq) => ({
         ...faq.toObject(),
-        question: faq.languages[language]?.question || faq.question,
-        answer: faq.languages[language]?.answer || faq.answer,
+        question: faq.languages?.[language]?.question || faq.question,
+        answer: faq.languages?.[language]?.answer || faq.answer,
       }));
       return res.json(
         new ApiResponse(200, "FAQs fetched successfully", localizedFAQs),

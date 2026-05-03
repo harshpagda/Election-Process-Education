@@ -31,9 +31,14 @@ export default function AppHeader() {
     { label: t('header.home'), to: '/' },
     { label: t('header.elections'), to: '/live-elections' },
     { label: t('header.faq'), to: '/faq' },
+    { label: t('header.vote'), to: '/vote', protected: true },
     { label: t('header.dashboard'), to: '/dashboard', protected: true },
     { label: t('header.chat'), to: '/chat', protected: true },
   ];
+
+  if (user?.role === 'admin') {
+    translatedNavItems.push({ label: 'Admin Panel', to: '/admin', protected: true });
+  }
 
   const handleLanguageChange = (event) => {
     i18n.changeLanguage(event.target.value);

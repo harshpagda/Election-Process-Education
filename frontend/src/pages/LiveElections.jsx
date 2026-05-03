@@ -216,6 +216,26 @@ export default function LiveElections() {
                       </div>
                     )}
 
+                    {/* Announcements */}
+                    {selectedElection.announcements && selectedElection.announcements.length > 0 && (
+                      <div className="mb-8">
+                        <h3 className="text-xl font-bold mb-4 text-gray-900">📢 Announcements</h3>
+                        <div className="space-y-4">
+                          {selectedElection.announcements.map((announcement) => (
+                            <div key={announcement._id || Math.random()} className="p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
+                              <div className="flex justify-between items-start mb-2">
+                                <h4 className="font-semibold text-blue-900">{announcement.title}</h4>
+                                <span className="text-xs text-blue-600 font-medium">
+                                  {new Date(announcement.date).toLocaleDateString()}
+                                </span>
+                              </div>
+                              <p className="text-sm text-blue-800">{announcement.content}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
                     {/* Timeline */}
                     {timelines.length > 0 && (
                       <div className="mb-8">

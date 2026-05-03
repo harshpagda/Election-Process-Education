@@ -46,7 +46,15 @@ export default function Register() {
         throw new Error('Passwords do not match');
       }
 
-      const response = await authService.register(formData);
+      const registrationData = {
+        ...formData,
+        email: formData.email.trim(),
+        phone: formData.phone.trim(),
+        state: formData.state || undefined,
+        dateOfBirth: formData.dateOfBirth || undefined,
+      };
+
+      const response = await authService.register(registrationData);
       localStorage.setItem('token', response.token);
       localStorage.setItem('user', JSON.stringify(response.user));
       setUser(response.user);

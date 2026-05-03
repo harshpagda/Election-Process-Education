@@ -12,6 +12,8 @@ import faqRoutes from "./routes/faq.routes.js";
 import aiRoutes from "./routes/ai.routes.js";
 import timelineRoutes from "./routes/timeline.routes.js";
 import pollingRoutes from "./routes/polling.routes.js";
+import candidateRoutes from "./routes/candidate.routes.js";
+import voteRoutes from "./routes/vote.routes.js";
 
 // Import middleware
 import { errorHandler } from "./middlewares/errorHandler.js";
@@ -54,6 +56,8 @@ app.use("/api/faq", faqRoutes);
 app.use("/api/ai", aiRoutes);
 app.use("/api/timeline", timelineRoutes);
 app.use("/api/polling", pollingRoutes);
+app.use("/api/candidates", candidateRoutes);
+app.use("/api/votes", voteRoutes);
 
 // 404 handler
 app.use((req, res) => {
